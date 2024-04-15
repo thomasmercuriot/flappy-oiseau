@@ -129,7 +129,17 @@ function update() {
 
     context.fillStyle = 'white';
     context.font = '80px VT323';
-    context.fillText(scoreFormatted, 157, 180); // -3 ; 299
+    //context.fillText(scoreFormatted, 157, 180); // -3 ; 299
+    var txt = scoreFormatted;
+    var x = 148;
+    var y = 180;
+    context.strokeStyle = 'black';
+    context.miterLimit = 2;
+    context.lineJoin = 'circle';
+    context.lineWidth = 7;
+    context.strokeText(txt, x, y);
+    context.lineWidth = 1;
+    context.fillText(txt, x, y);
 
     // game over text
 
