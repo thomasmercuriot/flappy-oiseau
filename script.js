@@ -211,11 +211,11 @@ function placeBaguettes() {
 // moveOiseau function
 
 function moveOiseau(e) {
-    if (e.code === '' || e.code === 'Space' || e.code === 'ArrowUp') {
+    if (e.code === '' || e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'KeyR') { //KeyR to start game with a jump ; gives the player enough time to switch controls to spacebar
         velocityY = -6;
 
     }
-    if (gameOver) {
+    if (gameOver && e.code === 'KeyR') { // Keypress R because if player spams the spacebar then it will always start a new game unintentionaly
         oiseau.y = oiseauY;
         baguetteArray = [];
         score = 0;
@@ -226,8 +226,8 @@ function moveOiseau(e) {
 // detectCollision function
 
 function detectCollision(a,b) {
-    return a.x < b.x + b.width - 30 &&
+    return a.x < b.x + b.width - 30 && // -30px to take 'baguette' curve shape into consideration ; otherwise crashing is too frequent even without contact
         a.x + a.width - 30 > b.x &&
-        a.y < b.y + b.height - 5 &&
+        a.y < b.y + b.height - 5 && // -5px to take 'oiseau' peculiar shape into consideration ; otherwise crashing is too frequent even without contact
         a.y + a.height - 5 > b.y;
 }
