@@ -115,13 +115,13 @@ function update() {
         if (detectCollision(oiseau , baguette)) {
             gameOver = true;
         }
-    } 
+    }
 
     // clear 'baguettes' to avoid a huge array and memory issues
 
     while (baguetteArray.length > 0 && baguetteArray[0].x + baguetteWidth < 0) {
         baguetteArray.shift(); // removes first element of the array
-    } 
+    }
 
     // score
 
@@ -135,8 +135,33 @@ function update() {
 
     if (gameOver) {
         context.font = '35px VT323';
-        context.fillText('OUI OUI BAGUETTE', 69, 240); // -1 ; 138
+        //context.fillText('OUI OUI BAGUETTE', 69, 240); // -1 ; 138
+        var txt = 'OUI OUI BAGUETTE';
+        var x = 69;
+        var y = 240;
+        context.strokeStyle = 'black';
+        context.miterLimit = 2;
+        context.lineJoin = 'circle';
+        context.lineWidth = 7;
+        context.strokeText(txt, x, y);
+        context.lineWidth = 1;
+        context.fillText(txt, x, y);
     }
+
+    if (gameOver) {
+      context.font = '20px VT323';
+      // context.fillText('PRESS R TO PLAY ENCORE', 93, 260); // -1 ; 185
+      var txt = 'PRESS R TO PLAY ENCORE';
+      var x = 93;
+      var y = 265;
+      context.strokeStyle = 'black';
+      context.miterLimit = 2;
+      context.lineJoin = 'circle';
+      context.lineWidth = 7;
+      context.strokeText(txt, x, y);
+      context.lineWidth = 1;
+      context.fillText(txt, x, y);
+  }
 }
 
 // placeBaguettes function
